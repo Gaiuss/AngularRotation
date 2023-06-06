@@ -56,7 +56,6 @@ public class AngularRotationTouchView extends View {
     public static final int DEFAULT_DELETE_LOCATION = LEFT_TOP;
     public static final boolean DEFAULT_EDITABLE = true;
 
-
     /**
      * 用于旋转缩放的Bitmap
      */
@@ -185,7 +184,6 @@ public class AngularRotationTouchView extends View {
 
     private DisplayMetrics metrics;
 
-
     private PointF mPreMovePointF = new PointF();
     private PointF mCurMovePointF = new PointF();
 
@@ -208,7 +206,6 @@ public class AngularRotationTouchView extends View {
     private int deleteLocation = DEFAULT_DELETE_LOCATION;
 
     private OnDeleteListener onDeleteListener;
-
 
     public AngularRotationTouchView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
@@ -258,7 +255,6 @@ public class AngularRotationTouchView extends View {
 
     }
 
-
     private void init() {
         mPaint = new Paint();
         mPaint.setAntiAlias(true);
@@ -285,7 +281,6 @@ public class AngularRotationTouchView extends View {
         transformDraw();
     }
 
-
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
@@ -298,7 +293,6 @@ public class AngularRotationTouchView extends View {
             mCenterPoint.set(parentWidth / 2, parentHeight / 2);
         }
     }
-
 
     /**
      * 调整View的大小，位置
@@ -318,7 +312,6 @@ public class AngularRotationTouchView extends View {
         }
     }
 
-
     /**
      * 设置旋转图
      *
@@ -328,7 +321,6 @@ public class AngularRotationTouchView extends View {
         this.mBitmap = bitmap;
         transformDraw();
     }
-
 
     /**
      * 设置旋转图
@@ -378,7 +370,6 @@ public class AngularRotationTouchView extends View {
             canvas.drawPath(mPath, mPaint);
             //画旋转, 缩放图标
 
-
             controlDrawable.setBounds(mControlPoint.x - mDrawableWidth / 2,
                     mControlPoint.y - mDrawableHeight / 2, mControlPoint.x + mDrawableWidth
                             / 2, mControlPoint.y + mDrawableHeight / 2);
@@ -392,7 +383,6 @@ public class AngularRotationTouchView extends View {
             }
         }
     }
-
 
     /**
      * 设置Matrix, 强制刷新
@@ -504,7 +494,6 @@ public class AngularRotationTouchView extends View {
         return true;
     }
 
-
     /**
      * 获取四个点和View的大小
      *
@@ -528,10 +517,8 @@ public class AngularRotationTouchView extends View {
         //计算X坐标最大的值和最小的值
         int maxCoordinateX = getMaxValue(mLTPoint.x, mRTPoint.x, mRBPoint.x, mLBPoint.x);
         int minCoordinateX = getMinValue(mLTPoint.x, mRTPoint.x, mRBPoint.x, mLBPoint.x);
-        ;
 
         mViewWidth = maxCoordinateX - minCoordinateX;
-
 
         //计算Y坐标最大的值和最小的值
         int maxCoordinateY = getMaxValue(mLTPoint.y, mRTPoint.y, mRBPoint.y, mLBPoint.y);
@@ -539,13 +526,11 @@ public class AngularRotationTouchView extends View {
 
         mViewHeight = maxCoordinateY - minCoordinateY;
 
-
         //View中心点的坐标
         Point viewCenterPoint = new Point((maxCoordinateX + minCoordinateX) / 2, (maxCoordinateY + minCoordinateY) / 2);
 
         offsetX = mViewWidth / 2 - viewCenterPoint.x;
         offsetY = mViewHeight / 2 - viewCenterPoint.y;
-
 
         int halfDrawableWidth = mDrawableWidth / 2;
         int halfDrawableHeight = mDrawableHeight / 2;
@@ -566,7 +551,6 @@ public class AngularRotationTouchView extends View {
         mDeletePoint = LocationToPoint(deleteLocation);
     }
 
-
     /**
      * 根据位置判断控制图标处于那个点
      *
@@ -586,7 +570,6 @@ public class AngularRotationTouchView extends View {
         return mLTPoint;
     }
 
-
     /**
      * 获取变长参数最大的值
      *
@@ -599,7 +582,6 @@ public class AngularRotationTouchView extends View {
         return list.get(list.size() - 1);
     }
 
-
     /**
      * 获取变长参数最大的值
      *
@@ -611,7 +593,6 @@ public class AngularRotationTouchView extends View {
         Collections.sort(list);
         return list.get(0);
     }
-
 
     /**
      * 获取旋转某个角度之后的点
@@ -690,7 +671,6 @@ public class AngularRotationTouchView extends View {
         return radian * 180 / Math.PI;
     }
 
-
     /**
      * 角度换算成弧度
      *
@@ -731,7 +711,6 @@ public class AngularRotationTouchView extends View {
 
     }
 
-
     public float getImageDegree() {
         return mDegree;
     }
@@ -764,7 +743,6 @@ public class AngularRotationTouchView extends View {
         }
         ;
     }
-
 
     public Drawable getControlDrawable() {
         return controlDrawable;
@@ -852,7 +830,6 @@ public class AngularRotationTouchView extends View {
         return controlLocation;
     }
 
-
     public PointF getCenterPoint() {
         return mCenterPoint;
     }
@@ -866,7 +843,6 @@ public class AngularRotationTouchView extends View {
         this.mCenterPoint = mCenterPoint;
         adjustLayout();
     }
-
 
     public boolean isEditable() {
         return isEditable;
@@ -894,7 +870,6 @@ public class AngularRotationTouchView extends View {
         float disY = pf2.y - pf1.y;
         return (float) Math.sqrt(disX * disX + disY * disY);
     }
-
 
     @SuppressWarnings("serial")
     public static class NotSupportedException extends RuntimeException {
@@ -943,7 +918,6 @@ public class AngularRotationTouchView extends View {
                 drawableright.getMinimumHeight());
         return drawableright;
     }
-
 
     public Drawable TextToDrawable(String str) {
         Bitmap bitmap = Bitmap.createBitmap(200, 250, Bitmap.Config.ARGB_8888);
