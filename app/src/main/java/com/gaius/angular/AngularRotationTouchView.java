@@ -231,12 +231,11 @@ public class AngularRotationTouchView extends View {
         framePadding = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, DEFAULT_FRAME_PADDING, metrics);
         frameWidth = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, DEFAULT_FRAME_WIDTH, metrics);
 
-        TypedArray mTypedArray = getContext().obtainStyledAttributes(attrs,
-                R.styleable.AngularRotationTouchView);
+        TypedArray mTypedArray = getContext().obtainStyledAttributes(attrs, R.styleable.AngularRotationTouchView);
 
-        Drawable srcDrawble = mTypedArray.getDrawable(R.styleable.AngularRotationTouchView_src);
-        if (srcDrawble instanceof BitmapDrawable) {
-            BitmapDrawable bd = (BitmapDrawable) srcDrawble;
+        Drawable srcDrawable = mTypedArray.getDrawable(R.styleable.AngularRotationTouchView_src);
+        if (srcDrawable instanceof BitmapDrawable) {
+            BitmapDrawable bd = (BitmapDrawable) srcDrawable;
             this.mBitmap = bd.getBitmap();
         }
 
@@ -391,6 +390,8 @@ public class AngularRotationTouchView extends View {
         int bitmapWidth = (int) (mBitmap.getWidth() * mScale);
         int bitmapHeight = (int) (mBitmap.getHeight() * mScale);
         computeRect(-framePadding, -framePadding, bitmapWidth + framePadding, bitmapHeight + framePadding, mDegree);
+        /*computeRect(-bitmapWidth + framePadding, -bitmapHeight + framePadding,
+                bitmapWidth + framePadding, bitmapHeight + framePadding, mDegree);*/
 
         //设置缩放比例
         matrix.setScale(mScale, mScale);
